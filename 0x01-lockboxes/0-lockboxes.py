@@ -4,27 +4,17 @@
 
 def canUnlockAll(boxes):
     """ Checks if all boxes can be unlocked """
-    keys = []
-    for key in boxes[0]:
-        keys.append(key)
-
-    count = 1
+    keys = [*boxes[0]]
     locked_boxes = []
 
-    while (count < len(boxes)):
+    for count in range(1, len(boxes)):
         if (count in keys):
-            for key in boxes[count]:
-                keys.append(key)
-
+            keys += boxes[count]
         else:
             locked_boxes.append(count)
-
-        count += 1
 
     for box in locked_boxes:
         if box not in keys:
             return False
-        for key in boxes[box]:
-            keys.append(key)
-
+        keys += boxes[box]
     return True
