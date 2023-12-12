@@ -12,7 +12,7 @@ def minOperations(n):
 
     copy_and_paste = 2
     paste = 1
-    clipboard = 0
+    clipboard = 1
     text_count = 1
     operations = 0
 
