@@ -16,7 +16,7 @@ def minOperations(n):
     text_count = 1
     operations = 0
 
-    while n != text_count:
+    while n > text_count:
         if text_count + text_count <= n and text_count != copy_and_paste:
             operations += copy_and_paste
             clipboard = text_count
