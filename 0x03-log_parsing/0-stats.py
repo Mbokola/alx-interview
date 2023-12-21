@@ -4,7 +4,8 @@
 import sys
 import re
 
-log_entry_pattern = re.compile(r'^(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\] "GET /projects/260 HTTP/1.1" (\d+) (\d+)$')
+log_entry_pattern = re.compile(r'^(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\] "GET \
+/projects/260 HTTP/1.1" (\d+) (\d+)$')
 
 total_file_size = 0
 status_codes = []
@@ -21,7 +22,8 @@ try:
 
         if count % 10 == 0:
             print(f"File size: {total_file_size}")
-            for code in ["200", "301", "400", "401", "403", "404", "405", "500"]:
+            for code in ["200", "301", "400", "401", "403", "404", "405",
+                         "500"]:
                 if status_codes.count(code):
                     print(f"{code}: {status_codes.count(code)}")
             total_file_size = 0
