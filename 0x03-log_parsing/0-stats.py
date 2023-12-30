@@ -3,7 +3,7 @@
 import sys
 import re
 
-log_entry_pattern = re.compile(r'^(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\] '
+log_entry_pattern = re.compile(r'^(\d+\.\d+\.\d+\.\d+)[ ]?-[ ]?\[([^\]]+)\] '
                                r'"GET /projects/260 HTTP/1.1" (\d+) (\d+)$')
 
 total_file_size = 0
@@ -17,6 +17,7 @@ try:
             ip_address, date, status_code, file_size = match.groups()
             total_file_size += int(file_size)
             status_codes.append(int(status_code))
+            print(file_size)
 
         if count % 10 == 0:
             print(f"File size: {total_file_size}")
