@@ -1,35 +1,36 @@
 #!/usr/bin/python3
 """ 0-stats module parses log files """
 import sys
-import re
-
-log_entry_pattern = re.compile(r'^(\d+\.\d+\.\d+\.\d+)[ ]?-[ ]?\[([^\]]+)\] '
-                               r'"GET /projects/260 HTTP/1.1" (\d+) (\d+)$')
 
 total_file_size = 0
 status_codes = []
 
 try:
     for count, line in enumerate(sys.stdin, start=1):
-        match = log_entry_pattern.match(line)
-
-        if match:
-            ip_address, date, status_code, file_size = match.groups()
+        try:
+            status_code = line.split()[-2]
+        except IndexError:
+            status_code = ""
+        try:
+            file_size = line.split()[-1]
+        except IndexError:
+            file_size = "0"
+        try:
             total_file_size += int(file_size)
-            status_codes.append(int(status_code))
-
-        if count % 10 == 0:
-            print(f"File size: {total_file_size}")
-            for code in [200, 301, 400, 401, 403, 404, 405,
-                         500]:
-                if status_codes.count(code):
-                    print(f"{code}: {status_codes.count(code)}")
+        except ValueError:
+            pass
+        status_codes.append(status_code)
+    if count % 10 == 0:
+        print(f"File size: {total_file_size}")
+        for code in ["200", "301", "400", "401", "403", "404", "405", "500"]:
+            if status_codes.count(code):
+                print(f"{code}: {status_codes.count(code)}")
 
 except KeyboardInterrupt:
     pass
 
 finally:
     print(f"File size: {total_file_size}")
-    for code in [200, 301, 400, 401, 403, 404, 405, 500]:
+    for code in ["200", "301", "400", "401", "403", "404", "405", "500"]:
         if status_codes.count(code):
             print(f"{code}: {status_codes.count(code)}")
