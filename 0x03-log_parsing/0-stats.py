@@ -28,7 +28,10 @@ try:
             status_codes = []
 
 except KeyboardInterrupt:
-    print(f"File size: {total_file_size}")
-    for code in [200, 301, 400, 401, 403, 404, 405, 500]:
-        if status_codes.count(code):
-            print(f"{code}: {status_codes.count(code)}")
+    pass
+finally:
+    if count % 10 != 0:
+        print(f"File size: {total_file_size}")
+        for code in [200, 301, 400, 401, 403, 404, 405, 500]:
+            if status_codes.count(code):
+                print(f"{code}: {status_codes.count(code)}")
