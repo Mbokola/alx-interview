@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 0-stats module """
+""" 0-stats module parses log files """
 
 import sys
 import re
