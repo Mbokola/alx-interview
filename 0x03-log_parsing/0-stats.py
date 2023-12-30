@@ -24,8 +24,6 @@ try:
                          500]:
                 if status_codes.count(code):
                     print(f"{code}: {status_codes.count(code)}")
-            total_file_size = 0
-            status_codes = []
 
 except KeyboardInterrupt:
     pass
