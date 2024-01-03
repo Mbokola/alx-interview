@@ -21,5 +21,5 @@ def validUTF8(data):
         else:
             if not binary.startswith("10"):
                 return False
-            count -= 0
+            count -= 1
     return True
