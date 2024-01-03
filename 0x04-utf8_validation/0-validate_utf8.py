@@ -8,7 +8,6 @@ def validUTF8(data):
         if encoding < 128:
             continue
         binary = bin(encoding).split("0b")[1]
-        if binary.startswith("11"):
-            continue
-        return False
+        if binary.startswith("10"):
+            return False
     return True
