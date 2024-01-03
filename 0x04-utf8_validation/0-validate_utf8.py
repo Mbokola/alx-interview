@@ -7,7 +7,6 @@ def validUTF8(data):
     count = 0
     for encoding in data:
         binary = format(encoding, '08b')
-        print(binary)
         if count == 0:
             if binary.startswith('0'):
                 continue
