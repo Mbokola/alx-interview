@@ -15,7 +15,11 @@ def makeChange(coins, total):
                 count = total // coin
                 total -= coin * count
                 change_coin_count += count
+
+        if not coins:
+            return -1
+
         if total:
             del coins[0]
 
-    return change_coin_count if not total else -1
+    return change_coin_count
