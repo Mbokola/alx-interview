@@ -7,9 +7,9 @@ def makeChange(coins, total):
     """ Finds least number of coins needed to make change
     """
     change_coin_count = 0
+    coins.sort(reverse=True)
 
     while (total > 0):
-        coins.sort(reverse=True)
         for coin in coins:
             if coin <= total:
                 count = total // coin
@@ -19,7 +19,6 @@ def makeChange(coins, total):
             return -1
 
         if total:
-            coins.sort()
-            coins.pop()
+            del coins[0]
 
     return change_coin_count
