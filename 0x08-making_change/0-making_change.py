@@ -9,7 +9,7 @@ def makeChange(coins, total):
     change_coin_count = 0
     coins.sort(reverse=True)
 
-    while (total > 0 and coins):
+    while (total > 0):
         for coin in coins:
             if coin <= total:
                 count = total // coin
