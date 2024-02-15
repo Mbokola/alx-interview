@@ -1,4 +1,4 @@
-#!/usr/bin/pythoOAAn3
+#!/usr/bin/python3
 """ 0-prime_game module """
 
 
